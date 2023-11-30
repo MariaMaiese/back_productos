@@ -4,13 +4,13 @@ import { testConection } from '../database/config';
 class Server {
     app: any;
     port: any;
-    // cotizacionesPath: string;
+    categoria_curso: string;
 
 
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
-        // this.cotizacionesPath = '/cotizaciones';
+        this.categoria_curso = '/categoria-curso';
 
         // Conectar a base de datos
         this.conectarDB();
@@ -39,7 +39,7 @@ class Server {
 
     routes() {
 
-        // this.app.use(this.cotizacionesPath, require('../routes/cotizaciones.routes'))
+        this.app.use(this.categoria_curso, require('../routes/categorias_curso.routes'))
 
     }
 

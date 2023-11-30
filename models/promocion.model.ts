@@ -33,6 +33,10 @@ promocion.init({
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    PRM_ESTADO: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
 }, {
     sequelize, //We need to pass the connection instance
     modelName: 'promocion'

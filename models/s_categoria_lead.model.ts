@@ -30,6 +30,10 @@ s_categoria_lead.init({
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    SLE_ESTADO: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
 }, {
     sequelize, //We need to pass the connection instance
     modelName: 's_categoria_lead'

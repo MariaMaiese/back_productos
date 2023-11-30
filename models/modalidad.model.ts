@@ -21,6 +21,10 @@ modalidad.init({
         type: DataTypes.STRING(50),
         allowNull: false
     },
+    MOD_ESTADO: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
 }, {
     sequelize, //We need to pass the connection instance
     modelName: 'modalidad'

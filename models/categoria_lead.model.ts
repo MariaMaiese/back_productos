@@ -21,6 +21,10 @@ categoria_lead.init({
         type: DataTypes.STRING(90),
         allowNull: false
     },
+    CLE_ESTADO: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
 }, {
     sequelize, //We need to pass the connection instance
     modelName: 'categoria_lead'

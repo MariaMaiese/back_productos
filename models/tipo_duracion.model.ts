@@ -24,6 +24,10 @@ tipo_duracion.init({
         type: DataTypes.STRING(50),
         allowNull: false
     },
+    TDU_ESTADO: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
 }, {
     sequelize, //We need to pass the connection instance
     modelName: 'tipo_duracion'

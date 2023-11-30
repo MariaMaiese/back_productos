@@ -37,6 +37,10 @@ valoracion.init({
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    VAL_ESTADO: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
 }, {
     sequelize, //We need to pass the connection instance
     modelName: 'valoracion'

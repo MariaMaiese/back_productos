@@ -30,6 +30,10 @@ s_categoria_curso.init({
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    SCU_ESTADO: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
 }, {
     sequelize, //We need to pass the connection instance
     modelName: 's_categoria_curso'
