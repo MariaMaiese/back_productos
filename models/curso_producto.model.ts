@@ -15,11 +15,11 @@ export class curso_producto extends Model {
             as: 'MOD_ID',
             foreignKey: 'MOD_ID'
         });
-        curso_producto.hasOne(models.s_categoria_curso, {
+        curso_producto.hasOne(models.subcategoria_curso, {
             as: 'SCU_ID',
             foreignKey: 'SCU_ID'
         });
-        curso_producto.hasOne(models.tipo_duracion, {
+        curso_producto.hasOne(models.tipo_de_duracion, {
             as: 'TDU_ID',
             foreignKey: 'TDU_ID'
         });

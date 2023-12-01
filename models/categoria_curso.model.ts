@@ -3,7 +3,7 @@ import { sequelize } from "../database/config";
 
 export class categoria_curso extends Model {
     static associate(models: any) {
-        categoria_curso.hasMany(models.s_categoria_curso, {
+        categoria_curso.hasMany(models.subcategoria_curso, {
             as: 'CCU_ID',
             foreignKey: 'CCU_ID',
         });

@@ -1,15 +1,15 @@
 import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../database/config";
 
-export class tipo_duracion extends Model {
+export class tipo_de_duracion extends Model {
     static associate(models: any) {
-        tipo_duracion.hasMany(models.curso_producto, {
+        tipo_de_duracion.hasMany(models.curso_producto, {
             as: 'TDU_ID',
             foreignKey: 'TDU_ID',
         });
     }
 }
-tipo_duracion.init({
+tipo_de_duracion.init({
     TDU_ID: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -30,5 +30,5 @@ tipo_duracion.init({
     },
 }, {
     sequelize, //We need to pass the connection instance
-    modelName: 'tipo_duracion'
+    modelName: 'tipo_de_duracion'
 })

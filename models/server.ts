@@ -8,8 +8,8 @@ class Server {
     categorias_leadPath: string;
     modalidadesPath: string;
     promocionesPath: string;
-    s_categorias_cursoPath: string;
-    s_categorias_leadPath: string;
+    subcategorias_cursoPath: string;
+    subcategorias_leadPath: string;
     tipos_duracionPath: string;
     valoracionesPath: string;
     cursos_productoPath: string
@@ -24,8 +24,8 @@ class Server {
         this.categorias_leadPath = '/categorias-lead';
         this.modalidadesPath = '/modalidades';
         this.promocionesPath = '/promociones';
-        this.s_categorias_cursoPath = '/s-categoria-curso';
-        this.s_categorias_leadPath = '/s-categoria-lead';
+        this.subcategorias_cursoPath = '/subcategoria-curso';
+        this.subcategorias_leadPath = '/subcategoria-lead';
         this.tipos_duracionPath = '/tipos-duracion';
         this.valoracionesPath = '/valoraciones';
         this.cursos_productoPath = '/cursos';
@@ -63,9 +63,9 @@ class Server {
         this.app.use(this.categorias_leadPath, require('../routes/categorias_lead.routes'))
         this.app.use(this.modalidadesPath, require('../routes/modalidades.routes'))
         this.app.use(this.promocionesPath, require('../routes/promociones.routes'))
-        this.app.use(this.s_categorias_cursoPath, require('../routes/s_categorias_curso.routes'))
-        this.app.use(this.s_categorias_leadPath, require('../routes/s_categorias_lead.routes'))
-        this.app.use(this.tipos_duracionPath, require('../routes/tipo_duracion.routes'))
+        this.app.use(this.subcategorias_cursoPath, require('../routes/subcategorias_curso.routes'))
+        this.app.use(this.subcategorias_leadPath, require('../routes/subcategorias_lead.routes'))
+        this.app.use(this.tipos_duracionPath, require('../routes/tipos_duracion.routes'))
         this.app.use(this.valoracionesPath, require('../routes/valoraciones.routes'))
         this.app.use(this.cursos_productoPath, require('../routes/cursos_producto.routes'))
         this.app.use(this.leads_productoPath, require('../routes/leads_producto.routes'))

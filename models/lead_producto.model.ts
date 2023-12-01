@@ -3,7 +3,7 @@ import { sequelize } from "../database/config";
 
 export class lead_producto extends Model {
     static associate(models: any) {
-        lead_producto.hasOne(models.s_categoria_lead, {
+        lead_producto.hasOne(models.subcategoria_lead, {
             as: 'SLE_ID',
             foreignKey: 'SLE_ID'
         });

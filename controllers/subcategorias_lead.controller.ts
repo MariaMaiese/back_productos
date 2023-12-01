@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { s_categoria_lead } from '../models/s_categoria_lead.model';
+import { s_categoria_lead } from '../models/subcategoria_lead.model';
 
 
 
