@@ -2,6 +2,7 @@ import { categoria_curso } from "../models/categoria_curso.model";
 import { categoria_lead } from "../models/categoria_lead.model";
 import { modalidad } from "../models/modalidad.model";
 import { promocion } from "../models/promocion.model";
+import { tipo_duracion } from "../models/tipo_duracion.model";
 
 const existeCategoriaCurso = async (id: number) => {
     const existeCategoriaCurso = await categoria_curso.findByPk(id);
@@ -88,6 +89,23 @@ const estadoSubCategoriaCursoEstaDeshabilitado = async (id: any) => {
     }
 }
 
+const existeTipoDuracion = async (id: number) => {
+    const existeModalidad = await modalidad.findByPk(id);
+    if (!existeModalidad) {
+        throw new Error('El id no existe')
+    }
+}
+
+const estadoTipoDuracionEstaDeshabilitado = async (id: any) => {
+    const estadoTipoDuracionEstaDeshabilitado: any = await tipo_duracion.findByPk(id, {
+        attributes: ['TDU_ESTADO']
+    })
+
+    if (!estadoTipoDuracionEstaDeshabilitado.TDU_ESTADO) {
+        throw new Error(`El tipo de duración ya está deshabilitado`);
+    }
+}
+
 export {
     existeCategoriaCurso,
     estadoCategoriaCursoEstaDeshabilitado,
@@ -98,5 +116,7 @@ export {
     existePromocion,
     estadoPromocionEstaDeshabilitado,
     existeSubCategoriaCurso,
-    estadoSubCategoriaCursoEstaDeshabilitado
+    estadoSubCategoriaCursoEstaDeshabilitado,
+    existeTipoDuracion,
+    estadoTipoDuracionEstaDeshabilitado
 }
