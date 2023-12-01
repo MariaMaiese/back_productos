@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
-import { s_categoria_curso } from '../models/s_categoria_curso.model';
+import { subcategoria_curso } from '../models/subcategoria_curso.model';
 
 
 
 const s_categorias_cursoGet = async (req: Request, res: Response) => {
-    const s_categorias_curso: s_categoria_curso[] = await s_categoria_curso.findAll()
+    const s_categorias_curso: subcategoria_curso[] = await subcategoria_curso.findAll()
     res.status(200).json({
         ok: true,
         status: 200,
@@ -15,19 +15,19 @@ const s_categorias_cursoGet = async (req: Request, res: Response) => {
 const s_categorias_cursoGetById = async (req: Request, res: Response) => {
     const { id } = req.params
 
-    const s_categoria_cursoById: any = await s_categoria_curso.findByPk(id);
+    const subcategoria_cursoById: any = await subcategoria_curso.findByPk(id);
 
     res.status(200).json({
         ok: true,
         status: 200,
-        body: s_categoria_cursoById
+        body: subcategoria_cursoById
     })
 }
 
 const s_categorias_cursoPost = async (req: Request, res: Response) => {
     const { SCU_NOMBRE, CCU_ID } = req.body;
 
-    await s_categoria_curso.create({
+    await subcategoria_curso.create({
         SCU_NOMBRE, SCU_ESTADO: true, CCU_ID
     })
 
@@ -44,7 +44,7 @@ const s_categorias_cursoPut = async (req: Request, res: Response) => {
 
     const { SCU_NOMBRE } = req.body;
 
-    await s_categoria_curso.update({ SCU_NOMBRE }, {
+    await subcategoria_curso.update({ SCU_NOMBRE }, {
         where: {
             SCU_ID: id
         }
@@ -61,7 +61,7 @@ const s_categorias_cursoDelete = async (req: Request, res: Response) => {
 
     const { id } = req.params;
 
-    s_categoria_curso.update({ SCU_ESTADO: false }, {
+    subcategoria_curso.update({ SCU_ESTADO: false }, {
         where: {
             SCU_ID: id
         }

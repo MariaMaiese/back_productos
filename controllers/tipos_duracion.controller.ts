@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
-import { tipo_duracion } from '../models/tipo_duracion.model';
+import { tipo_de_duracion } from '../models/tipo_de_duracion.model';
 
 
 
 const tipos_duracionGet = async (req: Request, res: Response) => {
-    const tipos_duracion: tipo_duracion[] = await tipo_duracion.findAll()
+    const tipos_duracion: tipo_de_duracion[] = await tipo_de_duracion.findAll()
     res.status(200).json({
         ok: true,
         status: 200,
@@ -15,7 +15,7 @@ const tipos_duracionGet = async (req: Request, res: Response) => {
 const tipos_duracionGetById = async (req: Request, res: Response) => {
     const { id } = req.params
 
-    const tipo_duracionById: any = await tipo_duracion.findByPk(id);
+    const tipo_duracionById: any = await tipo_de_duracion.findByPk(id);
 
     res.status(200).json({
         ok: true,
@@ -27,7 +27,7 @@ const tipos_duracionGetById = async (req: Request, res: Response) => {
 const tipos_duracionPost = async (req: Request, res: Response) => {
     const { TDU_NOMBRE, TDU_DESCRIPCION } = req.body;
 
-    await tipo_duracion.create({
+    await tipo_de_duracion.create({
         TDU_NOMBRE, TDU_DESCRIPCION, TDU_ESTADO: true
     })
 
@@ -44,7 +44,7 @@ const tipos_duracionPut = async (req: Request, res: Response) => {
 
     const { TDU_NOMBRE, TDU_DESCRIPCION } = req.body;
 
-    await tipo_duracion.update({ TDU_NOMBRE, TDU_DESCRIPCION }, {
+    await tipo_de_duracion.update({ TDU_NOMBRE, TDU_DESCRIPCION }, {
         where: {
             TDU_ID: id
         }
@@ -61,7 +61,7 @@ const tipos_duracionDelete = async (req: Request, res: Response) => {
 
     const { id } = req.params;
 
-    tipo_duracion.update({ TDU_ESTADO: false }, {
+    tipo_de_duracion.update({ TDU_ESTADO: false }, {
         where: {
             TDU_ID: id
         }

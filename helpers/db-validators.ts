@@ -2,9 +2,10 @@ import { categoria_curso } from "../models/categoria_curso.model";
 import { categoria_lead } from "../models/categoria_lead.model";
 import { modalidad } from "../models/modalidad.model";
 import { promocion } from "../models/promocion.model";
-import { tipo_duracion } from "../models/tipo_duracion.model";
-import { s_categoria_curso } from "../models/s_categoria_curso.model";
-import { s_categoria_lead } from "../models/s_categoria_lead.model";
+import { tipo_de_duracion } from "../models/tipo_de_duracion.model";
+import { subcategoria_curso } from "../models/subcategoria_curso.model";
+import { subcategoria_lead } from "../models/subcategoria_lead.model";
+import { valoracion } from "../models/valoracion.model";
 
 const existeCategoriaCurso = async (id: number) => {
     const existeCategoriaCurso = await categoria_curso.findByPk(id);
@@ -75,14 +76,14 @@ const estadoPromocionEstaDeshabilitado = async (id: any) => {
 }
 
 const existeSubCategoriaCurso = async (id: number) => {
-    const existeSubCategoriaCurso = await s_categoria_curso.findByPk(id);
+    const existeSubCategoriaCurso = await subcategoria_curso.findByPk(id);
     if (!existeSubCategoriaCurso) {
         throw new Error('El id no existe')
     }
 }
 
 const estadoSubCategoriaCursoEstaDeshabilitado = async (id: any) => {
-    const estadoSubCategoriaCursoEstaDeshabilitado: any = await s_categoria_curso.findByPk(id, {
+    const estadoSubCategoriaCursoEstaDeshabilitado: any = await subcategoria_curso.findByPk(id, {
         attributes: ['SCU_ESTADO']
     })
 
@@ -92,19 +93,19 @@ const estadoSubCategoriaCursoEstaDeshabilitado = async (id: any) => {
 }
 
 const existeTipoDuracion = async (id: number) => {
-    const existeModalidad = await modalidad.findByPk(id);
+    const existeModalidad = await tipo_de_duracion.findByPk(id);
     if (!existeModalidad) {
     }
 }
 const existeSubCategoriaLead = async (id: number) => {
-    const existeSubCategoriaLead = await s_categoria_lead.findByPk(id);
+    const existeSubCategoriaLead = await subcategoria_lead.findByPk(id);
     if (!existeSubCategoriaLead) {
         throw new Error('El id no existe')
     }
 }
 
 const estadoTipoDuracionEstaDeshabilitado = async (id: any) => {
-    const estadoTipoDuracionEstaDeshabilitado: any = await tipo_duracion.findByPk(id, {
+    const estadoTipoDuracionEstaDeshabilitado: any = await tipo_de_duracion.findByPk(id, {
         attributes: ['TDU_ESTADO']
     })
 
@@ -114,7 +115,7 @@ const estadoTipoDuracionEstaDeshabilitado = async (id: any) => {
     }
 }
 const estadoSubCategoriaLeadEstaDeshabilitado = async (id: any) => {
-    const estadoSubCategoriaLeadEstaDeshabilitado: any = await s_categoria_lead.findByPk(id, {
+    const estadoSubCategoriaLeadEstaDeshabilitado: any = await subcategoria_lead.findByPk(id, {
         attributes: ['SLE_ESTADO']
     })
 
@@ -124,14 +125,14 @@ const estadoSubCategoriaLeadEstaDeshabilitado = async (id: any) => {
 }
 
 const existeValoracion = async (id: number) => {
-    const existeValoracion = await s_categoria_lead.findByPk(id);
+    const existeValoracion = await valoracion.findByPk(id);
     if (!existeValoracion) {
         throw new Error('El id no existe')
     }
 }
 
 const estadoValoracionEstaDeshabilitado = async (id: any) => {
-    const estadoValoracionEstaDeshabilitado: any = await s_categoria_lead.findByPk(id, {
+    const estadoValoracionEstaDeshabilitado: any = await valoracion.findByPk(id, {
         attributes: ['VAL_ESTADO']
     })
 

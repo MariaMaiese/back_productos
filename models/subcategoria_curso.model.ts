@@ -1,21 +1,21 @@
 import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../database/config";
 
-export class s_categoria_curso extends Model {
+export class subcategoria_curso extends Model {
     static associate(models: any) {
-        s_categoria_curso.hasMany(models.curso_producto, {
+        subcategoria_curso.hasMany(models.curso_producto, {
             as: 'SCU_ID',
             foreignKey: 'SCU_ID',
         });
 
-        s_categoria_curso.hasOne(models.categoria_curso, {
+        subcategoria_curso.hasOne(models.categoria_curso, {
             as: 'CCU_ID',
             foreignKey: 'CCU_ID'
         });
     }
 }
 
-s_categoria_curso.init({
+subcategoria_curso.init({
     SCU_ID: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -36,5 +36,5 @@ s_categoria_curso.init({
     },
 }, {
     sequelize, //We need to pass the connection instance
-    modelName: 's_categoria_curso'
+    modelName: 'subcategoria_curso'
 })
