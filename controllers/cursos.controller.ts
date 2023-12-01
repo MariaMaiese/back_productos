@@ -23,8 +23,6 @@ const cursos_productoGetById = async (req: Request, res: Response) => {
         body: curso_productoById
     })
 }
-
-//FIXME: agregar el metodo post de productos
 const cursos_productoPost = async (req: Request, res: Response) => {
     const { CUR_DIRIGIDO_A, CUR_OBJETIVOS, CUR_ESTRUCTURA,
         CUR_IMAGEN_1, CUR_IMAGEN_2, CUR_VIDEO_PROMOCIONAL,
@@ -61,6 +59,8 @@ const cursos_productoPut = async (req: Request, res: Response) => {
         CUR_CANTIDAD_MAX_PARTICIPANTES,
         CUR_DURACION, CUR_INCLUYE_CERTIFICACION } = req.body;
 
+    await productosPut()
+
     await curso_producto.update({
         CUR_DIRIGIDO_A, CUR_OBJETIVOS, CUR_ESTRUCTURA,
         CUR_IMAGEN_1, CUR_IMAGEN_2, CUR_VIDEO_PROMOCIONAL,
@@ -84,11 +84,7 @@ const cursos_productoDelete = async (req: Request, res: Response) => {
 
     const { id } = req.params;
 
-    curso_producto.update({ CUR_ESTADO: false }, {
-        where: {
-            PRO_ID: id
-        }
-    })
+    await productosDelete()
 
     res.status(200).json({
         ok: true,
