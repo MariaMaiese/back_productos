@@ -4,13 +4,33 @@ import { testConection } from '../database/config';
 class Server {
     app: any;
     port: any;
-    categoria_curso: string;
+    categorias_cursoPath: string;
+    categorias_leadPath: string;
+    modalidadesPath: string;
+    promocionesPath: string;
+    s_categorias_cursoPath: string;
+    s_categorias_leadPath: string;
+    tipos_duracionPath: string;
+    valoracionesPath: string;
+    cursos_productoPath: string
+    leads_productoPath: string
+    productosPath: string
 
 
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
-        this.categoria_curso = '/categoria-curso';
+        this.categorias_cursoPath = '/categorias-curso';
+        this.categorias_leadPath = '/categorias-lead';
+        this.modalidadesPath = '/modalidades';
+        this.promocionesPath = '/promociones';
+        this.s_categorias_cursoPath = '/s-categoria-curso';
+        this.s_categorias_leadPath = '/s-categoria-lead';
+        this.tipos_duracionPath = '/tipos-duracion';
+        this.valoracionesPath = '/valoraciones';
+        this.cursos_productoPath = '/cursos';
+        this.leads_productoPath = '/leads';
+        this.productosPath = '/produtos';
 
         // Conectar a base de datos
         this.conectarDB();
@@ -39,7 +59,17 @@ class Server {
 
     routes() {
 
-        this.app.use(this.categoria_curso, require('../routes/categorias_curso.routes'))
+        this.app.use(this.categorias_cursoPath, require('../routes/categorias_curso.routes'))
+        this.app.use(this.categorias_leadPath, require('../routes/categorias_lead.routes'))
+        this.app.use(this.modalidadesPath, require('../routes/modalidades.routes'))
+        this.app.use(this.promocionesPath, require('../routes/promociones.routes'))
+        this.app.use(this.s_categorias_cursoPath, require('../routes/s_categorias_curso.routes'))
+        this.app.use(this.s_categorias_leadPath, require('../routes/s_categorias_lead.routes'))
+        this.app.use(this.tipos_duracionPath, require('../routes/tipos_duracion.routes'))
+        this.app.use(this.valoracionesPath, require('../routes/valoraciones.routes'))
+        this.app.use(this.cursos_productoPath, require('../routes/cursos_producto.routes'))
+        this.app.use(this.leads_productoPath, require('../routes/leads_producto.routes'))
+        this.app.use(this.productosPath, require('../routes/productos.routes'))
 
     }
 
