@@ -35,8 +35,6 @@ curso_producto.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
-        //FIXME: esta ok es heredada de producto, deberia ser autoincrement?
-        autoIncrement: true
     },
     CUR_DIRIGIDO_A: {
         type: DataTypes.STRING(255),

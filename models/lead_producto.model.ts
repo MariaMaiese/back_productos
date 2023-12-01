@@ -20,8 +20,6 @@ lead_producto.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
-        //FIXME: esta ok es heredada de producto, deberia ser autoincrement?
-        autoIncrement: true
     },
     LEA_URL_DIR: {
         type: DataTypes.STRING(255),
