@@ -7,6 +7,7 @@ import { subcategoria_curso } from "../models/subcategoria_curso.model";
 import { subcategoria_lead } from "../models/subcategoria_lead.model";
 import { valoracion } from "../models/valoracion.model";
 import { producto } from "../models/producto.model";
+import { lead_producto } from "../models/lead_producto.model";
 
 const existeCategoriaCurso = async (id: number) => {
     const existeCategoriaCurso = await categoria_curso.findByPk(id);
@@ -159,6 +160,13 @@ const estadoProductoEstaDeshabilitado = async (id: any) => {
     }
 }
 
+const existeLead = async (id: number) => {
+    const existeLead = await lead_producto.findByPk(id);
+    if (!existeLead) {
+        throw new Error('El id no existe')
+    }
+}
+
 export {
     existeCategoriaCurso,
     estadoCategoriaCursoEstaDeshabilitado,
@@ -178,4 +186,6 @@ export {
     estadoValoracionEstaDeshabilitado,
     existeProducto,
     estadoProductoEstaDeshabilitado,
+    existeLead,
+
 }
