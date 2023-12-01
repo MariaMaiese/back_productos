@@ -15,7 +15,7 @@ router.get('/:id', [
 ], valoracionesGetById);
 
 router.post('/', [
-    check('VAL_FECHA', 'Debe ingresar la fecha').notEmpty(),
+    check('VAL_FECHA', 'Debe ingresar la fecha').notEmpty().isDate(),
     check('VAL_PUNTAJE', 'Debe ingresar el puntaje').notEmpty().isInt(),
     check('VAL_COMENTARIO', 'Debe ingresar el comentario').notEmpty(),
     check('USU_ID', 'Debe ingresar el id del usuario correctamente').notEmpty().isInt(),
@@ -25,7 +25,7 @@ router.post('/', [
 
 router.put('/:id', [
     param('id').custom(existeValoracion),
-    check('VAL_FECHA', 'Debe ingresar la fecha').notEmpty(),
+    check('VAL_FECHA', 'Debe ingresar la fecha').notEmpty().isDate(),
     check('VAL_PUNTAJE', 'Debe ingresar el puntaje').notEmpty().isInt(),
     check('VAL_COMENTARIO', 'Debe ingresar el comentario').notEmpty(),
     check('USU_ID', 'Debe ingresar el id del usuario correctamente').notEmpty().isInt(),

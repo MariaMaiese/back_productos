@@ -8,6 +8,7 @@ import { subcategoria_lead } from "../models/subcategoria_lead.model";
 import { valoracion } from "../models/valoracion.model";
 import { producto } from "../models/producto.model";
 import { lead_producto } from "../models/lead_producto.model";
+import { curso_producto } from "../models/curso_producto.model";
 
 const existeCategoriaCurso = async (id: number) => {
     const existeCategoriaCurso = await categoria_curso.findByPk(id);
@@ -167,6 +168,23 @@ const existeLead = async (id: number) => {
     }
 }
 
+const existeCursoProducto = async (id: number) => {
+    const existeCursoProducto = await curso_producto.findByPk(id);
+    if (!existeCursoProducto) {
+        throw new Error('El id no existe')
+    }
+}
+
+const estadoCursoProductoEstaDeshabilitado = async (id: any) => {
+    const estadoCursoProductoEstaDeshabilitado: any = await curso_producto.findByPk(id, {
+        attributes: ['CUR_ESTADO']
+    })
+
+    if (!estadoCursoProductoEstaDeshabilitado.CUR_ESTADO) {
+        throw new Error(`El estado del curso ya está deshabilitado`);
+    }
+}
+
 export {
     existeCategoriaCurso,
     estadoCategoriaCursoEstaDeshabilitado,
@@ -187,5 +205,6 @@ export {
     existeProducto,
     estadoProductoEstaDeshabilitado,
     existeLead,
-
+    existeCursoProducto,
+    estadoCursoProductoEstaDeshabilitado
 }

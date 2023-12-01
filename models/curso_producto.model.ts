@@ -100,6 +100,10 @@ curso_producto.init({
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    CUR_ESTADO: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
 }, {
     sequelize, //We need to pass the connection instance
     modelName: 'curso_producto'
