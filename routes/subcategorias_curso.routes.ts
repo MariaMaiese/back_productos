@@ -2,7 +2,7 @@ import { Router } from "express";
 import { validarCampos } from "../middlewares/validar-campos";
 import { estadoSubCategoriaCursoEstaDeshabilitado, existeSubCategoriaCurso } from "../helpers/db-validators";
 import { check, param } from "express-validator";
-const { s_categorias_cursoGet, s_categorias_cursoGetById, s_categorias_cursoPost, s_categorias_cursoPut, s_categorias_cursoDelete } = require('../controllers/s_categorias_curso.controller')
+const { s_categorias_cursoGet, s_categorias_cursoGetById, s_categorias_cursoPost, s_categorias_cursoPut, s_categorias_cursoDelete } = require('../controllers/subcategorias_curso.controller')
 
 
 const router = Router();
