@@ -65,7 +65,7 @@ class Server {
         this.app.use(this.promocionesPath, require('../routes/promociones.routes'))
         this.app.use(this.s_categorias_cursoPath, require('../routes/s_categorias_curso.routes'))
         this.app.use(this.s_categorias_leadPath, require('../routes/s_categorias_lead.routes'))
-        this.app.use(this.tipos_duracionPath, require('../routes/tipos_duracion.routes'))
+        this.app.use(this.tipos_duracionPath, require('../routes/tipo_duracion.routes'))
         this.app.use(this.valoracionesPath, require('../routes/valoraciones.routes'))
         this.app.use(this.cursos_productoPath, require('../routes/cursos_producto.routes'))
         this.app.use(this.leads_productoPath, require('../routes/leads_producto.routes'))

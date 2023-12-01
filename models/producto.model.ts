@@ -1,7 +1,5 @@
 import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../database/config";
-
-//FIXME: esta clase es abstracta
 export class producto extends Model {
     static associate(models: any) {
         producto.hasOne(models.curso_producto, {
@@ -22,19 +20,23 @@ producto.init({
         primaryKey: true,
         autoIncrement: true
     },
+    PRO_NOMBRE: {
+        type: DataTypes.STRING(50),
+        allowNull: false
+    },
     PRO_DESCRIPCION: {
         type: DataTypes.STRING(255),
         allowNull: false
     },
     PRO_DESCRIPCION_CORTA: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.STRING(155),
         allowNull: false
     },
     PRO_PRECIO: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    PRO_PRECIO_DESCRUENTO: {
+    PRO_PRECIO_DESCUENTO: {
         type: DataTypes.INTEGER,
         allowNull: false
     },

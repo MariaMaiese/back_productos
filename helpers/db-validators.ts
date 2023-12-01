@@ -5,6 +5,8 @@ import { promocion } from "../models/promocion.model";
 import { tipo_duracion } from "../models/tipo_duracion.model";
 import { s_categoria_curso } from "../models/s_categoria_curso.model";
 import { s_categoria_lead } from "../models/s_categoria_lead.model";
+import { producto } from "../models/producto.model";
+import { valoracion } from "../models/valoracion.model";
 
 const existeCategoriaCurso = async (id: number) => {
     const existeCategoriaCurso = await categoria_curso.findByPk(id);
@@ -124,19 +126,36 @@ const estadoSubCategoriaLeadEstaDeshabilitado = async (id: any) => {
 }
 
 const existeValoracion = async (id: number) => {
-    const existeValoracion = await s_categoria_lead.findByPk(id);
+    const existeValoracion = await valoracion.findByPk(id);
     if (!existeValoracion) {
         throw new Error('El id no existe')
     }
 }
 
 const estadoValoracionEstaDeshabilitado = async (id: any) => {
-    const estadoValoracionEstaDeshabilitado: any = await s_categoria_lead.findByPk(id, {
+    const estadoValoracionEstaDeshabilitado: any = await valoracion.findByPk(id, {
         attributes: ['VAL_ESTADO']
     })
 
     if (!estadoValoracionEstaDeshabilitado.VAL_ESTADO) {
-        throw new Error(`El estado de lead ya está deshabilitado`);
+        throw new Error(`El estado de la valoración ya está deshabilitado`);
+    }
+}
+
+const existeProducto = async (id: number) => {
+    const existeProducto = await producto.findByPk(id);
+    if (!existeProducto) {
+        throw new Error('El id no existe')
+    }
+}
+
+const estadoProductoEstaDeshabilitado = async (id: any) => {
+    const estadoProductoEstaDeshabilitado: any = await producto.findByPk(id, {
+        attributes: ['PRO_ESTADO']
+    })
+
+    if (!estadoProductoEstaDeshabilitado.PRO_ESTADO) {
+        throw new Error(`El estado del producto ya está deshabilitado`);
     }
 }
 
@@ -156,5 +175,7 @@ export {
     existeSubCategoriaLead,
     estadoSubCategoriaLeadEstaDeshabilitado,
     existeValoracion,
-    estadoValoracionEstaDeshabilitado
+    estadoValoracionEstaDeshabilitado,
+    existeProducto,
+    estadoProductoEstaDeshabilitado,
 }
