@@ -22,9 +22,7 @@ router.post('/', [
 
 router.put('/:id', [
     param('id').custom(existeSubCategoriaCurso),
-    check('PRM_NOMBRE', 'Debe ingresar el nombre').notEmpty(),
-    check('PRM_DESCUENTO', 'Debe ingresar el descuento').notEmpty().isInt(),
-    check('PRM_CANTIDAD_PARTICIANTES', 'Debe ingresar la cantidad de participantes').notEmpty().isInt(),
+    check('SCU_NOMBRE', 'Debe ingresar el nombre').notEmpty(),
     validarCampos
 ], s_categorias_cursoPut);
 

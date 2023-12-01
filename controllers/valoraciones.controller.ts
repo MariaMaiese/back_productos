@@ -26,11 +26,11 @@ const valoracionesGetById = async (req: Request, res: Response) => {
 
 const valoracionesPost = async (req: Request, res: Response) => {
     const { VAL_FECHA, VAL_PUNTAJE,
-        VAL_COMENTARIO, USU_ID, PRO_ID, TDU_DESCRIPCION } = req.body;
+        VAL_COMENTARIO, USU_ID, PRO_ID } = req.body;
 
     await valoracion.create({
         VAL_FECHA, VAL_PUNTAJE,
-        VAL_COMENTARIO, USU_ID, PRO_ID, TDU_DESCRIPCION, VAL_ESTADO: true
+        VAL_COMENTARIO, USU_ID, PRO_ID, VAL_ESTADO: true
     })
 
     res.status(200).json({
@@ -45,11 +45,11 @@ const valoracionesPut = async (req: Request, res: Response) => {
     const { id } = req.params;
 
     const { VAL_FECHA, VAL_PUNTAJE,
-        VAL_COMENTARIO, USU_ID, PRO_ID, TDU_DESCRIPCION } = req.body;
+        VAL_COMENTARIO, USU_ID, PRO_ID } = req.body;
 
     await valoracion.update({
         VAL_FECHA, VAL_PUNTAJE,
-        VAL_COMENTARIO, USU_ID, PRO_ID, TDU_DESCRIPCION
+        VAL_COMENTARIO, USU_ID, PRO_ID
     }, {
         where: {
             VAL_ID: id
