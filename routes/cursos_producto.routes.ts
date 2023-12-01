@@ -15,7 +15,11 @@ router.get('/:id', [
 ], cursos_productoGetById);
 
 router.post('/', [
-    check('PRO_ID', 'Debe ingresar el id del producto').notEmpty(),
+    check('PRO_NOMBRE', 'Debe ingresar el nombre').notEmpty(),
+    check('PRO_DESCRIPCION', 'Debe ingresar la descripción').notEmpty(),
+    check('PRO_DESCRIPCION_CORTA', 'Debe ingresar la descripción corta').notEmpty(),
+    check('PRO_PRECIO', 'Debe ingresar el precio').notEmpty().isInt(),
+    check('PRO_PRECIO_DESCUENTO', 'Debe ingresar el precio').notEmpty().isInt(),
     check('CUR_DIRIGIDO_A', 'Debe ingresar el campo dirigido a').notEmpty(),
     check('CUR_OBJETIVOS', 'Debe ingresar los objetivos').notEmpty(),
     check('CUR_ESTRUCTURA', 'Debe ingresar la estructura').notEmpty(),
@@ -23,21 +27,41 @@ router.post('/', [
     check('CUR_IMAGEN_2', 'Debe ingresar la imagen').notEmpty(),
     check('CUR_VIDEO_PROMOCIONAL', 'Debe ingresar el video').notEmpty(),
     check('CUR_FECHA_INICIO', 'Debe ingresar la fecha de inicio').notEmpty().isDate(),
-    check('CUR_CANTIDAD_MIN_PARTICIPANTES', 'Debe ingresar cantidad minima de participantes').notEmpty(),
-    check('CUR_CANTIDAD_MAX_PARTICIPANTES', 'Debe ingresar cantidad máxima de participantes').notEmpty(),
+    check('CUR_CANTIDAD_MIN_PARTICIPANTES', 'Debe ingresar cantidad minima de participantes').notEmpty().isInt(),
+    check('CUR_CANTIDAD_MAX_PARTICIPANTES', 'Debe ingresar cantidad máxima de participantes').notEmpty().isInt(),
     check('CUR_CODIGO_SENCE', 'Debe ingresar el código sence').notEmpty(),
     check('CUR_DURACION', 'Debe ingresar la duración').notEmpty(),
-    check('CUR_INCLUYE_CERTIFICACION', 'Debe ingresar si ncluye certificación').notEmpty(),
-    check('USU_ID', 'Debe ingresar el id del usuario').notEmpty(),
-    check('TDU_ID', 'Debe ingresar el id del tipo de duración').notEmpty(),
-    check('MOD_ID', 'Debe ingresar el id dela modalidad').notEmpty(),
+    check('CUR_INCLUYE_CERTIFICACION', 'Debe ingresar si ncluye certificación').notEmpty().isBoolean(),
+    check('TDU_ID', 'Debe ingresar el id del tipo de duración').notEmpty().isInt(),
+    check('MOD_ID', 'Debe ingresar el id de la modalidad').notEmpty().isInt(),
+    check('USU_ID', 'Debe ingresar el id de la modalidad').notEmpty().isInt(),
     check('SCU_ID', 'Debe ingresar subcategoría del curso').notEmpty().isInt(),
     validarCampos
 ], cursos_productoPost);
 
 router.put('/:id', [
     param('id').custom(existeCursoProducto),
-    check('CLE_NOMBRE', 'Debe ingresar el nombre').notEmpty(),
+    check('PRO_NOMBRE', 'Debe ingresar el nombre').notEmpty(),
+    check('PRO_DESCRIPCION', 'Debe ingresar la descripción').notEmpty(),
+    check('PRO_DESCRIPCION_CORTA', 'Debe ingresar la descripción corta').notEmpty(),
+    check('PRO_PRECIO', 'Debe ingresar el precio').notEmpty().isInt(),
+    check('PRO_PRECIO_DESCUENTO', 'Debe ingresar el precio').notEmpty().isInt(),
+    check('CUR_DIRIGIDO_A', 'Debe ingresar el campo dirigido a').notEmpty(),
+    check('CUR_OBJETIVOS', 'Debe ingresar los objetivos').notEmpty(),
+    check('CUR_ESTRUCTURA', 'Debe ingresar la estructura').notEmpty(),
+    check('CUR_IMAGEN_1', 'Debe ingresar la imagen').notEmpty(),
+    check('CUR_IMAGEN_2', 'Debe ingresar la imagen').notEmpty(),
+    check('CUR_VIDEO_PROMOCIONAL', 'Debe ingresar el video').notEmpty(),
+    check('CUR_FECHA_INICIO', 'Debe ingresar la fecha de inicio').notEmpty().isDate(),
+    check('CUR_CANTIDAD_MIN_PARTICIPANTES', 'Debe ingresar cantidad minima de participantes').notEmpty().isInt(),
+    check('CUR_CANTIDAD_MAX_PARTICIPANTES', 'Debe ingresar cantidad máxima de participantes').notEmpty().isInt(),
+    check('CUR_CODIGO_SENCE', 'Debe ingresar el código sence').notEmpty(),
+    check('CUR_DURACION', 'Debe ingresar la duración').notEmpty(),
+    check('CUR_INCLUYE_CERTIFICACION', 'Debe ingresar si ncluye certificación').notEmpty().isBoolean(),
+    check('TDU_ID', 'Debe ingresar el id del tipo de duración').notEmpty().isInt(),
+    check('MOD_ID', 'Debe ingresar el id de la modalidad').notEmpty().isInt(),
+    check('USU_ID', 'Debe ingresar el id del usuario').notEmpty().isInt(),
+    check('SCU_ID', 'Debe ingresar subcategoría del curso').notEmpty().isInt(),
     validarCampos
 ], cursos_productoPut);
 
