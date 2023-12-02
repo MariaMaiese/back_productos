@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { curso_producto } from '../models/curso_producto.model';
+import { producto } from '../models/producto.model';
 const { productosPost, productosPut, productosDelete } = require('./productos.controller')
 
 
@@ -24,17 +25,25 @@ const cursos_productoGetById = async (req: Request, res: Response) => {
     })
 }
 const cursos_productoPost = async (req: Request, res: Response) => {
-    const { CUR_DIRIGIDO_A, CUR_OBJETIVOS, CUR_ESTRUCTURA,
+    const { PRO_NOMBRE, PRO_DESCRIPCION,
+        PRO_DESCRIPCION_CORTA, PRO_PRECIO,
+        PRO_PRECIO_DESCUENTO, CUR_DIRIGIDO_A, CUR_OBJETIVOS, CUR_ESTRUCTURA,
         CUR_IMAGEN_1, CUR_IMAGEN_2, CUR_VIDEO_PROMOCIONAL,
         CUR_FECHA_INICIO, CUR_CANTIDAD_MIN_PARTICIPANTES,
         CUR_CANTIDAD_MAX_PARTICIPANTES, CUR_CODIGO_SENCE,
         CUR_DURACION, CUR_INCLUYE_CERTIFICACION,
         USU_ID, TDU_ID, MOD_ID, SCU_ID } = req.body;
 
-    const newProducto: any = await productosPost()
+
+    const producto_nuevo = {
+        PRO_NOMBRE, PRO_DESCRIPCION,
+        PRO_DESCRIPCION_CORTA, PRO_PRECIO,
+        PRO_PRECIO_DESCUENTO,
+    }
+    const producto_respuesta: any = await productosPost(producto_nuevo)
 
     await curso_producto.create({
-        PRO_ID: newProducto.PRO_ID, CUR_DIRIGIDO_A, CUR_OBJETIVOS, CUR_ESTRUCTURA,
+        PRO_ID: producto_respuesta.PRO_ID, CUR_DIRIGIDO_A, CUR_OBJETIVOS, CUR_ESTRUCTURA,
         CUR_IMAGEN_1, CUR_IMAGEN_2, CUR_VIDEO_PROMOCIONAL,
         CUR_FECHA_INICIO, CUR_CANTIDAD_MIN_PARTICIPANTES,
         CUR_CANTIDAD_MAX_PARTICIPANTES, CUR_CODIGO_SENCE,
@@ -53,13 +62,27 @@ const cursos_productoPut = async (req: Request, res: Response) => {
 
     const { id } = req.params;
 
-    const { CUR_DIRIGIDO_A, CUR_OBJETIVOS, CUR_ESTRUCTURA,
+    const { PRO_NOMBRE, PRO_DESCRIPCION,
+        PRO_DESCRIPCION_CORTA, PRO_PRECIO,
+        PRO_PRECIO_DESCUENTO, CUR_DIRIGIDO_A, CUR_OBJETIVOS, CUR_ESTRUCTURA,
         CUR_IMAGEN_1, CUR_IMAGEN_2, CUR_VIDEO_PROMOCIONAL,
         CUR_CANTIDAD_MIN_PARTICIPANTES,
         CUR_CANTIDAD_MAX_PARTICIPANTES,
         CUR_DURACION, CUR_INCLUYE_CERTIFICACION } = req.body;
 
-    await productosPut()
+    console.log(id)
+
+    const bodyProducto = {
+        PRO_NOMBRE,
+        PRO_DESCRIPCION,
+        PRO_DESCRIPCION_CORTA,
+        PRO_PRECIO,
+        PRO_PRECIO_DESCUENTO
+    }
+
+    const id_producto: any = id
+
+    await productosPut(id_producto, bodyProducto)
 
     await curso_producto.update({
         CUR_DIRIGIDO_A, CUR_OBJETIVOS, CUR_ESTRUCTURA,
@@ -84,7 +107,7 @@ const cursos_productoDelete = async (req: Request, res: Response) => {
 
     const { id } = req.params;
 
-    await productosDelete()
+    await productosDelete(id)
 
     res.status(200).json({
         ok: true,

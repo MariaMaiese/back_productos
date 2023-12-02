@@ -16,7 +16,8 @@ router.get('/:id', [
 
 router.post('/', [
     check('SCU_NOMBRE', 'Debe ingresar el nombre').notEmpty(),
-    check('CCU_ID', 'Debe ingresar el id de la categoria del curso correctamente').notEmpty().isInt(),
+    check('CCU_ID', 'Debe ingresar el id de la categoria del curso').notEmpty(),
+    check('CCU_ID', 'El id del la categoría del curso no cumple con el formato').isInt(),
     validarCampos
 ], s_categorias_cursoPost);
 

@@ -16,12 +16,14 @@ router.get('/:id', [
 
 router.post('/', [
     check('TDU_NOMBRE', 'Debe ingresar el nombre').notEmpty(),
+    check('TDU_DESCRIPCION', 'Debe ingresar la descripción').notEmpty(),
     validarCampos
 ], tipos_duracionPost);
 
 router.put('/:id', [
     param('id').custom(existeTipoDuracion),
     check('TDU_NOMBRE', 'Debe ingresar el nombre').notEmpty(),
+    check('TDU_DESCRIPCION', 'Debe ingresar la descripción').notEmpty(),
     validarCampos
 ], tipos_duracionPut);
 

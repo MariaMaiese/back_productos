@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { subcategoria_lead } from '../models/subcategoria_lead.model';
 
+
+
 const s_categorias_leadGet = async (req: Request, res: Response) => {
     const s_categorias_lead: subcategoria_lead[] = await subcategoria_lead.findAll()
     res.status(200).json({
@@ -13,12 +15,12 @@ const s_categorias_leadGet = async (req: Request, res: Response) => {
 const s_categorias_leadGetById = async (req: Request, res: Response) => {
     const { id } = req.params
 
-    const s_categoria_leadById: any = await subcategoria_lead.findByPk(id);
+    const subcategoria_leadById: any = await subcategoria_lead.findByPk(id);
 
     res.status(200).json({
         ok: true,
         status: 200,
-        body: s_categoria_leadById
+        body: subcategoria_leadById
     })
 }
 
