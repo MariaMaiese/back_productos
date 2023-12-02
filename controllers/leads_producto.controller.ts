@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { lead_producto } from '../models/lead_producto.model';
+import { producto } from '../models/producto.model';
 const { productosPost, productosPut, productosDelete } = require('./productos.controller')
 
 const leadsGet = async (req: Request, res: Response) => {
@@ -24,6 +25,7 @@ const leadsGetById = async (req: Request, res: Response) => {
 }
 
 const leadsPost = async (req: Request, res: Response) => {
+
     const { PRO_NOMBRE,
         PRO_DESCRIPCION,
         PRO_DESCRIPCION_CORTA,
@@ -33,10 +35,18 @@ const leadsPost = async (req: Request, res: Response) => {
         SLE_ID,
     } = req.body;
 
-    const newProducto: any = await productosPost()
+    const productoBody = {
+        PRO_NOMBRE,
+        PRO_DESCRIPCION,
+        PRO_DESCRIPCION_CORTA,
+        PRO_PRECIO,
+        PRO_PRECIO_DESCUENTO,
+    }
+
+    const productoNew: any = await productosPost(productoBody)
 
     await lead_producto.create({
-        PRO_ID: newProducto.PRO_ID,
+        PRO_ID: productoNew.PRO_ID,
         LEA_URL_DIR,
         SLE_ID,
     })
@@ -61,7 +71,15 @@ const leadsPut = async (req: Request, res: Response) => {
         SLE_ID,
     } = req.body;
 
-    await productosPut()
+    const productoBody = {
+        PRO_NOMBRE,
+        PRO_DESCRIPCION,
+        PRO_DESCRIPCION_CORTA,
+        PRO_PRECIO,
+        PRO_PRECIO_DESCUENTO,
+    }
+
+    await productosPut(id, productoBody)
 
     await lead_producto.update({
         LEA_URL_DIR,
@@ -83,7 +101,7 @@ const leadsDelete = async (req: Request, res: Response) => {
 
     const { id } = req.params;
 
-    await productosDelete()
+    await productosDelete(id)
 
     res.status(200).json({
         ok: true,

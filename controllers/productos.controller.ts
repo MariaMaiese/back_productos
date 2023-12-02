@@ -22,15 +22,16 @@ const productosGetById = async (req: Request, res: Response) => {
     })
 }
 
-const productosPost = async (req: Request, res: Response) => {
+const productosPost = async (body: any) => {
+
     const { PRO_NOMBRE,
         PRO_DESCRIPCION,
         PRO_DESCRIPCION_CORTA,
         PRO_PRECIO,
         PRO_PRECIO_DESCUENTO,
-    } = req.body;
+    } = body;
 
-    await producto.create({
+    return await producto.create({
         PRO_NOMBRE,
         PRO_DESCRIPCION,
         PRO_DESCRIPCION_CORTA,
@@ -40,23 +41,16 @@ const productosPost = async (req: Request, res: Response) => {
         PRO_DESTACADO: false,
         PRO_FECHA_CREACION: new Date(),
     })
-
-    res.status(200).json({
-        ok: true,
-        status: 200,
-        message: "Producto creado"
-    })
 }
 
-const productosPut = async (req: Request, res: Response) => {
-
-    const { id } = req.params;
+const productosPut = async (id: number, body: any) => {
 
     const { PRO_NOMBRE,
         PRO_DESCRIPCION,
         PRO_DESCRIPCION_CORTA,
         PRO_PRECIO,
-        PRO_PRECIO_DESCUENTO } = req.body;
+        PRO_PRECIO_DESCUENTO,
+    } = body;
 
     await producto.update({
         PRO_NOMBRE,
@@ -69,17 +63,10 @@ const productosPut = async (req: Request, res: Response) => {
             PRO_ID: id
         }
     })
-
-    res.status(200).json({
-        ok: true,
-        status: 200,
-        message: "Producto actualizado"
-    })
 }
 
-const productosDelete = async (req: Request, res: Response) => {
+const productosDelete = async (id: number) => {
 
-    const { id } = req.params;
 
     producto.update({ PRO_ESTADO: false }, {
         where: {
@@ -87,11 +74,6 @@ const productosDelete = async (req: Request, res: Response) => {
         }
     })
 
-    res.status(200).json({
-        ok: true,
-        status: 200,
-        message: "Producto eliminado"
-    })
 }
 
 module.exports = {

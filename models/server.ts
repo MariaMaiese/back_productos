@@ -24,13 +24,13 @@ class Server {
         this.categorias_leadPath = '/categorias-lead';
         this.modalidadesPath = '/modalidades';
         this.promocionesPath = '/promociones';
-        this.subcategorias_cursoPath = '/subcategoria-curso';
-        this.subcategorias_leadPath = '/subcategoria-lead';
+        this.subcategorias_cursoPath = '/subcategorias-curso';
+        this.subcategorias_leadPath = '/subcategorias-lead';
         this.tipos_duracionPath = '/tipos-duracion';
         this.valoracionesPath = '/valoraciones';
         this.cursos_productoPath = '/cursos';
         this.leads_productoPath = '/leads';
-        this.productosPath = '/produtos';
+        this.productosPath = '/productos';
 
         // Conectar a base de datos
         this.conectarDB();
@@ -65,7 +65,7 @@ class Server {
         this.app.use(this.promocionesPath, require('../routes/promociones.routes'))
         this.app.use(this.subcategorias_cursoPath, require('../routes/subcategorias_curso.routes'))
         this.app.use(this.subcategorias_leadPath, require('../routes/subcategorias_lead.routes'))
-        this.app.use(this.tipos_duracionPath, require('../routes/tipo_duracion.routes'))
+        this.app.use(this.tipos_duracionPath, require('../routes/tipos_duracion.routes'))
         this.app.use(this.valoracionesPath, require('../routes/valoraciones.routes'))
         this.app.use(this.cursos_productoPath, require('../routes/cursos_producto.routes'))
         this.app.use(this.leads_productoPath, require('../routes/leads_producto.routes'))

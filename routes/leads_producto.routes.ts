@@ -2,7 +2,7 @@ import { Router } from "express";
 import { validarCampos } from "../middlewares/validar-campos";
 import { estadoProductoEstaDeshabilitado, existeLead } from "../helpers/db-validators";
 import { check, param } from "express-validator";
-const { leadsGet, leadsGetById, leadsPost, leadsPut, leadsDelete } = require('../controllers/leads.controller')
+const { leadsGet, leadsGetById, leadsPost, leadsPut, leadsDelete } = require('../controllers/leads_producto.controller')
 
 
 const router = Router();

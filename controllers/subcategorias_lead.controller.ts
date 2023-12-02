@@ -1,10 +1,8 @@
 import { Request, Response } from 'express';
-import { s_categoria_lead } from '../models/subcategoria_lead.model';
-
-
+import { subcategoria_lead } from '../models/subcategoria_lead.model';
 
 const s_categorias_leadGet = async (req: Request, res: Response) => {
-    const s_categorias_lead: s_categoria_lead[] = await s_categoria_lead.findAll()
+    const s_categorias_lead: subcategoria_lead[] = await subcategoria_lead.findAll()
     res.status(200).json({
         ok: true,
         status: 200,
@@ -15,7 +13,7 @@ const s_categorias_leadGet = async (req: Request, res: Response) => {
 const s_categorias_leadGetById = async (req: Request, res: Response) => {
     const { id } = req.params
 
-    const s_categoria_leadById: any = await s_categoria_lead.findByPk(id);
+    const s_categoria_leadById: any = await subcategoria_lead.findByPk(id);
 
     res.status(200).json({
         ok: true,
@@ -27,7 +25,7 @@ const s_categorias_leadGetById = async (req: Request, res: Response) => {
 const s_categorias_leadPost = async (req: Request, res: Response) => {
     const { SLE_NOMBRE, CLE_ID } = req.body;
 
-    await s_categoria_lead.create({
+    await subcategoria_lead.create({
         SLE_NOMBRE, SLE_ESTADO: true, CLE_ID
     })
 
@@ -44,7 +42,7 @@ const s_categorias_leadPut = async (req: Request, res: Response) => {
 
     const { SLE_NOMBRE } = req.body;
 
-    await s_categoria_lead.update({ SLE_NOMBRE }, {
+    await subcategoria_lead.update({ SLE_NOMBRE }, {
         where: {
             SLE_ID: id
         }
@@ -61,7 +59,7 @@ const s_categorias_leadDelete = async (req: Request, res: Response) => {
 
     const { id } = req.params;
 
-    s_categoria_lead.update({ SLE_ESTADO: false }, {
+    subcategoria_lead.update({ SLE_ESTADO: false }, {
         where: {
             SLE_ID: id
         }

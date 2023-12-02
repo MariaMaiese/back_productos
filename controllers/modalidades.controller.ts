@@ -1,8 +1,6 @@
 import { Request, Response } from 'express';
 import { modalidad } from '../models/modalidad.model';
 
-
-
 const modalidadesGet = async (req: Request, res: Response) => {
     const modalidades: modalidad[] = await modalidad.findAll()
     res.status(200).json({

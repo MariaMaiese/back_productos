@@ -27,6 +27,7 @@ router.put('/:id', [
 
 router.delete('/:id', [
     param('id').custom(existeCategoriaLead),
+    param('id', "Debe ingresar el id").exists(),
     param('id').custom(estadoCategoriaLeadEstaDeshabilitado),
     validarCampos
 ], categorias_leadDelete);
