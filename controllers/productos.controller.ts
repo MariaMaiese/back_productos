@@ -22,13 +22,14 @@ const productosGetById = async (req: Request, res: Response) => {
     })
 }
 
-const productosPost = async (body_producto: any) => {
+const productosPost = async (body: any) => {
+
     const { PRO_NOMBRE,
         PRO_DESCRIPCION,
         PRO_DESCRIPCION_CORTA,
         PRO_PRECIO,
         PRO_PRECIO_DESCUENTO,
-    } = body_producto;
+    } = body;
 
     return await producto.create({
         PRO_NOMBRE,
@@ -40,23 +41,16 @@ const productosPost = async (body_producto: any) => {
         PRO_DESTACADO: false,
         PRO_FECHA_CREACION: new Date(),
     })
-
-    // res.status(200).json({
-    //     ok: true,
-    //     status: 200,
-    //     message: "Producto creado"
-    // })
 }
 
-const productosPut = async (id_producto: any, body_producto: any) => {
-
-    const id = id_producto;
+const productosPut = async (id: number, body: any) => {
 
     const { PRO_NOMBRE,
         PRO_DESCRIPCION,
         PRO_DESCRIPCION_CORTA,
         PRO_PRECIO,
-        PRO_PRECIO_DESCUENTO } = body_producto;
+        PRO_PRECIO_DESCUENTO,
+    } = body;
 
     await producto.update({
         PRO_NOMBRE,
