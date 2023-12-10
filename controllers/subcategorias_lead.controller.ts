@@ -24,6 +24,18 @@ const s_categorias_leadGetById = async (req: Request, res: Response) => {
     })
 }
 
+const s_categorias_leadGetByCategoriaId = async (req: Request, res: Response) => {
+    const { id } = req.params
+
+    const subcategoria_leadByCategoriaId: any = await subcategoria_lead.findAll({ where: { SLE_ID: id } });
+
+    res.status(200).json({
+        ok: true,
+        status: 200,
+        body: subcategoria_leadByCategoriaId
+    })
+}
+
 const s_categorias_leadPost = async (req: Request, res: Response) => {
     const { SLE_NOMBRE, CLE_ID } = req.body;
 
@@ -79,5 +91,6 @@ module.exports = {
     s_categorias_leadGetById,
     s_categorias_leadPost,
     s_categorias_leadPut,
-    s_categorias_leadDelete
+    s_categorias_leadDelete,
+    s_categorias_leadGetByCategoriaId
 } 

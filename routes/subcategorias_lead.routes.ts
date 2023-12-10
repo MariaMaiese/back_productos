@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { validarCampos } from "../middlewares/validar-campos";
-import { estadoSubCategoriaLeadEstaDeshabilitado, existeSubCategoriaLead } from "../helpers/db-validators";
+import { estadoSubCategoriaLeadEstaDeshabilitado, existeCategoriaLead, existeSubCategoriaLead } from "../helpers/db-validators";
 import { check, param } from "express-validator";
-const { s_categorias_leadGet, s_categorias_leadGetById, s_categorias_leadPost, s_categorias_leadPut, s_categorias_leadDelete } = require('../controllers/subcategorias_lead.controller')
+const { s_categorias_leadGet, s_categorias_leadGetByCategoriaId, s_categorias_leadGetById, s_categorias_leadPost, s_categorias_leadPut, s_categorias_leadDelete } = require('../controllers/subcategorias_lead.controller')
 
 const router = Router();
 
@@ -12,6 +12,11 @@ router.get('/:id', [
     param('id').custom(existeSubCategoriaLead),
     validarCampos
 ], s_categorias_leadGetById);
+
+router.get('/by-categoria/:id', [
+    param('id').custom(existeCategoriaLead),
+    validarCampos
+], s_categorias_leadGetByCategoriaId);
 
 router.post('/', [
     check('SLE_NOMBRE', 'Debe ingresar el nombre').notEmpty(),
