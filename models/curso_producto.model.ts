@@ -49,15 +49,15 @@ curso_producto.init({
         allowNull: false
     },
     CUR_IMAGEN_1: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.STRING(1000),
         allowNull: false
     },
     CUR_IMAGEN_2: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.STRING(1000),
         allowNull: false
     },
     CUR_VIDEO_PROMOCIONAL: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.STRING(1000),
         allowNull: false
     },
     CUR_FECHA_INICIO: {

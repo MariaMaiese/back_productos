@@ -3,7 +3,7 @@ import { sequelize } from "../database/config";
 
 export class valoracion extends Model {
     static associate(models: any) {
-        valoracion.hasOne(models.curso_producto, {
+        valoracion.belongsTo(models.curso_producto, {
             as: 'PRO_ID',
             foreignKey: 'PRO_ID'
         });
