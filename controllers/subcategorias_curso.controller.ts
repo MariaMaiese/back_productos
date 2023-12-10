@@ -24,6 +24,19 @@ const s_categorias_cursoGetById = async (req: Request, res: Response) => {
     })
 }
 
+
+const s_categorias_cursoGetByCategoriaId = async (req: Request, res: Response) => {
+    const { id } = req.params
+
+    const subcategoria_cursoByCategoriaId: any = await subcategoria_curso.findAll({ where: { CCU_ID: id } });
+
+    res.status(200).json({
+        ok: true,
+        status: 200,
+        body: subcategoria_cursoByCategoriaId
+    })
+}
+
 const s_categorias_cursoPost = async (req: Request, res: Response) => {
     const { SCU_NOMBRE, CCU_ID } = req.body;
 
@@ -79,5 +92,6 @@ module.exports = {
     s_categorias_cursoGetById,
     s_categorias_cursoPost,
     s_categorias_cursoPut,
-    s_categorias_cursoDelete
+    s_categorias_cursoDelete,
+    s_categorias_cursoGetByCategoriaId
 } 
