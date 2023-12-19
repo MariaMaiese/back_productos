@@ -2,12 +2,14 @@ import { Router } from "express";
 import { validarCampos } from "../middlewares/validar-campos";
 import { estadoCursoProductoEstaDeshabilitado, existeCursoProducto } from "../helpers/db-validators";
 import { check, param } from "express-validator";
-const { cursos_productoGet, cursos_productoGetById, cursos_productoPost, cursos_productoPut, cursos_productoDelete } = require('../controllers/cursos_producto.controller')
+const { cursos_productoGet, getCursosByUserId, cursos_productoGetById, cursos_productoPost, cursos_productoPut, cursos_productoDelete } = require('../controllers/cursos_producto.controller')
 
 
 const router = Router();
 
 router.get('/', cursos_productoGet);
+
+router.get('/cursos-by-user-id/:id', getCursosByUserId)
 
 router.get('/:id', [
     param('id').custom(existeCursoProducto),

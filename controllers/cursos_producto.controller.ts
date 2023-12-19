@@ -13,6 +13,19 @@ const cursos_productoGet = async (req: Request, res: Response) => {
     })
 }
 
+const getCursosByUserId = async (req: Request, res: Response) => {
+
+    const { id } = req.params
+
+    const cursos: curso_producto[] = await curso_producto.findAll({ where: { USU_ID: id } })
+
+    res.status(200).json({
+        ok: true,
+        status: 200,
+        body: cursos
+    })
+}
+
 const cursos_productoGetById = async (req: Request, res: Response) => {
     const { id } = req.params
 
@@ -121,5 +134,6 @@ module.exports = {
     cursos_productoGetById,
     cursos_productoPost,
     cursos_productoPut,
-    cursos_productoDelete
+    cursos_productoDelete,
+    getCursosByUserId
 } 
